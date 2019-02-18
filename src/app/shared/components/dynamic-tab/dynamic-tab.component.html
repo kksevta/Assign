@@ -1,0 +1,8 @@
+<div class="dynamic-tabs" (click)="selectTabClicked($event)">
+  <div class="src-tab" [ngClass]="[(tabInfo && tabInfo.active) ? 'active':'test']">
+    <div class="tab-line1">{{tabInfo?.name}}</div>
+    <div class="tab-line2">{{tabInfo?.login}}</div>
+    <!-- <i class="material-icons" (click)="closeTabClicked($event)">close</i> -->
+    <span (click)="closeTabClicked($event)">X</span>
+  </div>
+</div>

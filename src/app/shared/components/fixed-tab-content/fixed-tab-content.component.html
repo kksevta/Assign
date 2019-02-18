@@ -1,0 +1,17 @@
+<div class="tab-details" id="add-transaction">
+  <div class="">
+    <strong>Create new tab:</strong>
+  </div>
+  <form>
+    <div class="input-group">
+      <label for="user-name">Employee Name</label>
+      <input [(ngModel)]="name" type="text" name="name" placeholder="Employee name">
+    </div>
+    <div class="input-group">
+      <label for="user-login">Employee Login</label>
+      <input [(ngModel)]="login" type="text" name="login" placeholder="Employee login">
+    </div>
+
+    <button type="submit" (click)="createTabClicked()" class="create-tab-button">Create</button>
+  </form>
+</div>

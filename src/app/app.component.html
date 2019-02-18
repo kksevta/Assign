@@ -1,0 +1,74 @@
+<div class="src-container">
+
+    <!-- page header -->
+    <div class="src-header">Soroco</div>
+    <!-- left pane and right pane -->
+    <div class="src-panes">
+        <div class="column-pane left-pane">
+            <h4 class="pane-title">Original information</h4>
+            <div class="tab-container"></div>
+            <div class="tab-details"></div>
+            <div class="pane-lower-action">
+                <button type="button">Reject</button>
+            </div>
+        </div>
+
+        <div class="column-pane right-pane">
+            <h4 class="pane-title">Validation data</h4>
+            <!-- All the tab headings are populated here and the current active tab has the class "active" -->
+            <div class="tab-container">
+                <span *ngFor="let tab of tabs">
+                    <!-- <div class="fixed-tab">
+                        <div class="src-tab add-transaction-tab active">
+                            <div>
+                                <i class="material-icons">add_circle_outline</i>
+                                <span>Add transaction</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dynamic-tabs" id="dynamic-tabs">
+                        <div class="src-tab">
+                            <div class="tab-line1">Hello</div>
+                            <div class="tab-line2">John</div>
+                            <i class="material-icons">close</i>
+                        </div>
+                    </div> -->
+                    <app-fixed-tab [tabInfo]="tab" *ngIf="tab.tabType=='fixed'" (selectTab)="selectTab($event)"></app-fixed-tab>
+                    <app-dynamic-tab [tabInfo]="tab" *ngIf="tab.tabType=='dynamic'" (closeTab)="closeTab($event)"
+                        (selectTab)="selectTab($event)"></app-dynamic-tab>
+
+                </span>
+            </div>
+
+            <!-- Place holder for respective tab details that loads when you click on a partticular tab -->
+            <!-- Adding a transaction is the default first tab -->
+            <div class="tab-details" id="add-transaction">
+                <!-- <div class="">
+                    <strong>Create new tab:</strong>
+                </div>
+                <form>
+                    <div class="input-group">
+                        <label for="user-name">Employee Name</label>
+                        <input type="text" id="user-name" placeholder="Employee name">
+                    </div>
+                    <div class="input-group">
+                        <label for="user-login">Employee Login</label>
+                        <input type="text" id="user-login" placeholder="Employee login">
+                    </div>
+
+                    <button type="submit" (click)="createTab()" class="create-tab-button">Create</button>
+                </form> -->
+                <span *ngFor="let tab of tabs">
+                    <app-fixed-tab-content *ngIf="tab.tabType=='fixed' && tab.active" (createTab)="createTab($event)"></app-fixed-tab-content>
+                    <app-dynamic-tab-content [tabInfo]="tab" *ngIf="tab.tabType=='dynamic' && tab.active"></app-dynamic-tab-content>
+                </span>
+            </div>
+
+            <div class="pane-lower-action">
+                <button type="button">Submit</button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
